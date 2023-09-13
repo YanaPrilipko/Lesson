@@ -1,0 +1,15 @@
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\bin\Debug\net6.0\Lesson.exe
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\bin\Debug\net6.0\Lesson.deps.json
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\bin\Debug\net6.0\Lesson.runtimeconfig.json
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\bin\Debug\net6.0\Lesson.dll
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\bin\Debug\net6.0\Lesson.pdb
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.csproj.AssemblyReference.cache
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.GeneratedMSBuildEditorConfig.editorconfig
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.AssemblyInfoInputs.cache
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.AssemblyInfo.cs
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.csproj.CoreCompileInputs.cache
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.dll
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\refint\Lesson.dll
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.pdb
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\Lesson.genruntimeconfig.cache
+D:\Рoзробка С#\Program\Program\Lesson\Lesson\obj\Debug\net6.0\ref\Lesson.dll
