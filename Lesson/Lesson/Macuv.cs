@@ -21,6 +21,11 @@ namespace Lesson
             Bubble,
             Insertion
         }
+        public enum OrderBy
+        {
+            Asc,//за зростанням
+            Desc
+        }
         public static int[] arr = { 3, 1, 2 };
         public static int[] Sort(int[] arr, SortAlgorithmType sortAlgorithmType)
         {

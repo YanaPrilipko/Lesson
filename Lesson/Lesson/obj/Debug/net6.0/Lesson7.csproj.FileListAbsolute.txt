@@ -1,0 +1,15 @@
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\bin\Debug\net6.0\Lesson7.exe
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\bin\Debug\net6.0\Lesson7.deps.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\bin\Debug\net6.0\Lesson7.runtimeconfig.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\bin\Debug\net6.0\Lesson7.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\bin\Debug\net6.0\Lesson7.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.csproj.AssemblyReference.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.GeneratedMSBuildEditorConfig.editorconfig
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.AssemblyInfoInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.AssemblyInfo.cs
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.csproj.CoreCompileInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\refint\Lesson7.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\Lesson7.genruntimeconfig.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson\obj\Debug\net6.0\ref\Lesson7.dll
