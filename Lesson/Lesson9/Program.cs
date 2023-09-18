@@ -88,21 +88,20 @@ namespace Lesson9
         static void EditContact()
         {
             SearchContatct();
-            Console.WriteLine("Enter new Name ");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter new Phone ");
-            string phone = Console.ReadLine();
-            Console.WriteLine("Enter new Birth ");
+            Console.WriteLine("Enter new Name");
+            string name1 = Console.ReadLine();
+            Console.WriteLine("Enter new Phone");
+            string phone1 = Console.ReadLine();
+            Console.WriteLine("Enter new Birth");
             string birth = Console.ReadLine();
-            var birthTest = DateTime.Parse(birth);
+            var birth1 = DateTime.Parse(birth);
 
-
-            //contacts[i].name = name;
-           // contacts[i].phone = phone;
-           //contacts[i].date = birth;
+            contacts[Index].name = name1;
+            contacts[Index].phone = phone1;
+            contacts[Index].birth = birth1;
 
         }
-
+        static int Index;
         static void SearchContatct()
         {
             Console.WriteLine("Enter a name to search for");
@@ -119,12 +118,11 @@ namespace Lesson9
                     {
                         int age = DateTime.Now.Year - contactsNew[i].date.Year; 
                         Console.WriteLine($"#{i + 1}: Name: {contactsNew[i].Item1}, Phone: {contactsNew[i].Item2}, Age: {age}");
+                        Index = i;
                     }
                     break;
                 }
             }
-
-
         }
 
         static void WriteAllContactsToConsole()
