@@ -1,8 +1,7 @@
-﻿
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
 using System.Text;
 using System.Xml.Linq;
-
+using System.Globalization;
 namespace Lesson9
 {
     internal class Program
@@ -28,6 +27,15 @@ namespace Lesson9
             while (true)
             {
                 UserInteraction();
+                /*try
+                {
+                    UserInteraction();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Sorry, some error:{ex.Message} \n{ex.StackTrace}");
+                }*/
+
             }
         }
 
@@ -38,8 +46,35 @@ namespace Lesson9
             Console.WriteLine("3. Edit contact");
             Console.WriteLine("4. Search by name");
             Console.WriteLine("5. Save");
+            Console.Write("Enter a choice: ");
 
-            int input = int.Parse(Console.ReadLine());
+            //int input = int.Parse(Console.ReadLine());
+            uint input = 0;
+            bool tryAgain = true;
+            while (tryAgain)
+            {
+                try
+                {
+                    input = uint.Parse(Console.ReadLine());
+                    tryAgain = false;
+                }
+                catch(FormatException)
+                {
+                    Console.Write("You`ve entered a wrong choice,please try again ");
+                    //throw ex;
+                }
+                catch (OverflowException)
+                {
+                    Console.Write("You suck at math a positive namber ");
+                    //throw ex;
+                }
+                catch (SystemException)
+                {
+                    Console.Write("Sorry,some sestem happened ");
+                    //throw ex;
+                }
+            }
+
             switch (input)
             {
                 case 1:
@@ -67,45 +102,90 @@ namespace Lesson9
         {
             Console.WriteLine("Enter new Name ");
             string name = Console.ReadLine();
+
             Console.WriteLine("Enter new Phone ");
             string phone = Console.ReadLine();
-            Console.WriteLine("Enter new Birth ");
-            string birth = Console.ReadLine();
-            var birthTest = DateTime.Parse(birth);
+
+            DateTime birth = DateTime.Now;
+            try
+            {
+                Console.WriteLine("Enter new Birth");
+                birth = DateTime.Parse(Console.ReadLine(), System.Globalization.CultureInfo.GetCultureInfo("uk-UA"));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Sorry, wrong format");
+            }
 
             var contactsNew = new (string name, string phone, DateTime date)[contacts.Length + 1];
-            
-            for(var i = 0; i < contacts.Length; i++)
+
+            for (var i = 0; i < contacts.Length; i++)
             {
                 contactsNew[i] = contacts[i];
             }
             contactsNew[contacts.Length].name = name;
             contactsNew[contacts.Length].phone = phone;
-            contactsNew[contacts.Length].date = birthTest;
+            contactsNew[contacts.Length].date = birth;
             contacts = contactsNew;
             SaveContactsToFile();
         }
         static void EditContact()
         {
-            SearchContatct();
+            int Index = SearchContatct();
+
             Console.WriteLine("Enter new Name");
             string name1 = Console.ReadLine();
             Console.WriteLine("Enter new Phone");
             string phone1 = Console.ReadLine();
-            Console.WriteLine("Enter new Birth");
-            string birth = Console.ReadLine();
-            var birth1 = DateTime.Parse(birth);
 
-            contacts[Index].name = name1;
-            contacts[Index].phone = phone1;
-            contacts[Index].birth = birth1;
+            DateTime birth1 = DateTime.Now;
+            try
+            {
+                Console.WriteLine("Enter new Birth");
+                birth1 = DateTime.Parse(Console.ReadLine(), System.Globalization.CultureInfo.GetCultureInfo("uk-UA"));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Sorry, wrong format.");
+            }
+
+            Console.WriteLine("Are you sure you want to edit the data? True or False");
+            bool answer = Convert.ToBoolean(Console.ReadLine());
+
+            if (answer == true)
+            {
+                contacts[Index].name = name1;
+                contacts[Index].phone = phone1;
+                contacts[Index].birth = birth1;
+            }
 
         }
-        static int Index;
-        static void SearchContatct()
+
+        static int SearchContatct()
         {
-            Console.WriteLine("Enter a name to search for");
-            string name = Console.ReadLine();
+/*            Console.WriteLine("Enter a name to search for");
+            string name = Console.ReadLine();*/
+            string name = "";
+            try
+            {
+                Console.Write("Enter a name to search for : ");
+                name = Console.ReadLine();
+
+                if (name == null || name.Length < 2)
+                {
+                    throw new Exception("You entered an incorrect name");
+
+                }
+                else
+                {
+                    Console.WriteLine($"You entered a name: {name}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
 
             var contactsNew = new (string name, string phone, DateTime date)[contacts.Length + 1];
 
@@ -116,14 +196,14 @@ namespace Lesson9
                 {
                     if (name == contactsNew[i].name)
                     {
-                        int age = DateTime.Now.Year - contactsNew[i].date.Year; 
+                        int age = DateTime.Now.Year - contactsNew[i].date.Year;
                         Console.WriteLine($"#{i + 1}: Name: {contactsNew[i].Item1}, Phone: {contactsNew[i].Item2}, Age: {age}");
-                        Index = i;
+                        return i;
                     }
                     break;
                 }
-            }
-
+            } 
+            return 0;
         }
 
         static void WriteAllContactsToConsole()
@@ -164,17 +244,21 @@ namespace Lesson9
             File.WriteAllLines(database, lines);
         }
 
-        static string[] ReadDatabaseAllTextLines(string file) 
+        static string[] ReadDatabaseAllTextLines(string file)
         {
-            if (!File.Exists(file))
+            try
             {
-                File.WriteAllText(file, "");
+                return File.ReadAllLines(file);
             }
-            return File.ReadAllLines(file);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new string[0];
+            }
+
         }
     }
 }
-
 
 
 

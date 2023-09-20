@@ -1,37 +1,95 @@
 ﻿
 
-using Lesson8;
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine(Compare("Hello", "Hello"));
+        Console.WriteLine(Compare("Hello", "Hel"));
+        Console.WriteLine(Analyze("Hello, world"));
+        Console.WriteLine(Sort("Hello"));
+        Console.WriteLine(Duplicates("Hello, world"));
+    }
 
-//Compare
-string str1 = "Hello World";
-string str2 = "Hello World";
-string str3 = "Hello Friend";
-Console.WriteLine(String.Equals(str1, str2));
-Console.WriteLine(String.Equals(str1, str3));
+    static bool Compare(string a, string b)
+    {
+        if (a == null || b == null)
+        {
+            return false;
+        }
 
-Console.WriteLine(str1 == str2);
-Console.WriteLine(str1 == str3);
+        if (a.Length != b.Length)
+        {
+            return false;
+        }
 
-//Analyze
-string str = @"Compare that will return true if 2 strings are equal, otherwise false, but do not use build-in method
-Analyze that will return number of alphabetic chars in string, digits and another special characters
-Sort that will return string that contains all characters from input string sorted in alphabetical order (e.g. 'Hello' -> 'ehllo')
-Duplicate that will return array of characters that are duplicated in input string (e.g. 'Hello and hi' -> ['h', 'l'])";
-Console.WriteLine("Введите символ:");
-string s = Console.ReadLine();
-int count = str.ToCharArray().Where(c => c == s[0]).Count();
-Console.WriteLine(count);
-Console.ReadKey();
+        for (int i = 0; i < a.Length; ++i)
+        {
+            if (a[i] != b[i])
+            {
+                return false;
+            }
+        }
 
-//Sort 
-string a = "Bonyaa";
-string b = a.ToLower();
-b = string.Concat(b.OrderBy(ch => ch));
+        return true;
+    }
 
-Console.WriteLine(b);
+    static (int letters, int digits, int separators, int punctuations) Analyze(string s)
+    {
+        int count_letter = 0;
+        int count_digit = 0;
+        int count_sep = 0;
+        int count_pun = 0;
+
+        foreach (char c in s)
+        {
+            if (char.IsLetter(c))
+            {
+                count_letter++;
+            }
+            else if (char.IsDigit(c))
+            {
+                count_digit++;
+            }
+            else if (char.IsSeparator(c))
+            {
+                count_sep++;
+            }
+            else if (char.IsPunctuation(c))
+            {
+                count_pun++;
+            }
+        }
+
+        return (count_letter, count_digit, count_sep, count_pun);
+    }
+
+    static string Sort(string x)
+    {
+        char[] chars = x.ToLower().ToCharArray();
+        Array.Sort(chars);
+        return new string(chars);
+    }
+
+    static string Duplicates(string x)
+    {
+        string result = "";
+        x = x.ToLower();
+        for (int i = 0; i < x.Length; i++)
+        {
+            char y = x[i];
+            if (x.IndexOf(y, i + 1) != -1)
+            {
+                if (!result.Contains(y.ToString()))
+                {
+                    result += y;
+                }
+            }
+        }
+        return result;
+    }
+}
 
 
-//Duplicate
-Dublicate.Main();
 
 
