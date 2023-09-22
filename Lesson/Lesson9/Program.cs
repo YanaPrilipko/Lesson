@@ -12,7 +12,6 @@ namespace Lesson9
 
         static void Main()
         {
-
             // 0. SAVE IT TO THE FILE WITH ".CSV"
             // 1. Writes to console currently available contacts in the file
             // 2. Add new contact
@@ -20,7 +19,6 @@ namespace Lesson9
             // 4. Search contacts
             // 5. Calculates the contact age
             // 6. Save database
-
 
             string[] records = ReadDatabaseAllTextLines(database);
             contacts = ConvertStringsToContacts(records);
@@ -73,20 +71,14 @@ namespace Lesson9
             string birth = Console.ReadLine();
             var birthTest = DateTime.Parse(birth);
 
-            var contactsNew = new (string name, string phone, DateTime date)[contacts.Length + 1];
-            
-            for(var i = 0; i < contacts.Length; i++)
-            {
-                contactsNew[i] = contacts[i];
-            }
-            contactsNew[contacts.Length].name = name;
-            contactsNew[contacts.Length].phone = phone;
-            contactsNew[contacts.Length].date = birthTest;
-            contacts = contactsNew;
+            Array.Resize(ref contacts, contacts.Length + 1); //ref аргумент передається по ссилці
+            contacts[^1] = (name, phone, birthTest);
+
             SaveContactsToFile();
         }
         static void EditContact()
         {
+            int Index = SearchContatct();
             SearchContatct();
             Console.WriteLine("Enter new Name");
             string name1 = Console.ReadLine();
@@ -99,10 +91,9 @@ namespace Lesson9
             contacts[Index].name = name1;
             contacts[Index].phone = phone1;
             contacts[Index].birth = birth1;
-
         }
-        static int Index;
-        static void SearchContatct()
+
+        static int SearchContatct()
         {
             Console.WriteLine("Enter a name to search for");
             string name = Console.ReadLine();
@@ -116,14 +107,14 @@ namespace Lesson9
                 {
                     if (name == contactsNew[i].name)
                     {
-                        int age = DateTime.Now.Year - contactsNew[i].date.Year; 
+                        int age = DateTime.Now.Year - contactsNew[i].date.Year;
                         Console.WriteLine($"#{i + 1}: Name: {contactsNew[i].Item1}, Phone: {contactsNew[i].Item2}, Age: {age}");
-                        Index = i;
+                        return i;
                     }
                     break;
                 }
             }
-
+            return 0;
         }
 
         static void WriteAllContactsToConsole()

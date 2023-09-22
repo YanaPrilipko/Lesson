@@ -123,6 +123,7 @@ namespace Lesson9
             {
                 contactsNew[i] = contacts[i];
             }
+
             contactsNew[contacts.Length].name = name;
             contactsNew[contacts.Length].phone = phone;
             contactsNew[contacts.Length].date = birth;
@@ -210,7 +211,7 @@ namespace Lesson9
         {
             for (int i = 0; i < contacts.Length; i++)
             {
-                int age = DateTime.Now.Year - contacts[i].birth.Year; // підрахунок років
+                int age = DateTime.Now.Year - contacts[i].birth.Year; 
                 Console.WriteLine($"#{i + 1}: Name: {contacts[i].Item1}, Phone: {contacts[i].Item2}, Age: {age}");
             }
         }
@@ -234,14 +235,31 @@ namespace Lesson9
             return contacts;
         }
 
+
         static void SaveContactsToFile()
         {
-            string[] lines = new string[contacts.Length];
-            for (int i = 0; i < lines.Length; i++)
+            try
             {
-                lines[i] = $"{contacts[i].Item1},{contacts[i].Item2},{contacts[i].Item3}";
+                string[] lines = new string[contacts.Length];
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i] = $"{contacts[i].Item1},{contacts[i].Item2},{contacts[i].Item3}";
+                }
+                File.AppendAllLines("database ", lines);
             }
-            File.WriteAllLines(database, lines);
+
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine($"Error: directory not found: {ex.Message}");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"Input or output error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
 
         static string[] ReadDatabaseAllTextLines(string file)
@@ -250,12 +268,16 @@ namespace Lesson9
             {
                 return File.ReadAllLines(file);
             }
+            catch (DirectoryNotFoundException ex )
+            {
+                Console.WriteLine($"Error: directory not found: {ex.Message}");
+                return new string[0];
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return new string[0];
             }
-
         }
     }
 }
