@@ -1,0 +1,15 @@
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.csproj.AssemblyReference.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.GeneratedMSBuildEditorConfig.editorconfig
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.AssemblyInfoInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.AssemblyInfo.cs
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.csproj.CoreCompileInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\bin\Debug\net6.0\Lesson11_Сlass.exe
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\bin\Debug\net6.0\Lesson11_Сlass.deps.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\bin\Debug\net6.0\Lesson11_Сlass.runtimeconfig.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\bin\Debug\net6.0\Lesson11_Сlass.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\bin\Debug\net6.0\Lesson11_Сlass.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\refint\Lesson11_Сlass.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\Lesson11_Сlass.genruntimeconfig.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson11_Сlass\obj\Debug\net6.0\ref\Lesson11_Сlass.dll

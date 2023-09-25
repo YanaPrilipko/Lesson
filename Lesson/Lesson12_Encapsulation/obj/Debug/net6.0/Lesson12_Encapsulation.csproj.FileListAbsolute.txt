@@ -1,0 +1,15 @@
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\bin\Debug\net6.0\Lesson12_Encapsulation.exe
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\bin\Debug\net6.0\Lesson12_Encapsulation.deps.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\bin\Debug\net6.0\Lesson12_Encapsulation.runtimeconfig.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\bin\Debug\net6.0\Lesson12_Encapsulation.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\bin\Debug\net6.0\Lesson12_Encapsulation.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.csproj.AssemblyReference.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.GeneratedMSBuildEditorConfig.editorconfig
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.AssemblyInfoInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.AssemblyInfo.cs
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.csproj.CoreCompileInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\refint\Lesson12_Encapsulation.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\Lesson12_Encapsulation.genruntimeconfig.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson12_Encapsulation\obj\Debug\net6.0\ref\Lesson12_Encapsulation.dll

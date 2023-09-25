@@ -1,41 +1,53 @@
-﻿using System.Diagnostics.Contracts;
-using System.Text;
+﻿using System.Numerics;
 using System.Xml.Linq;
-using System.Globalization;
-namespace Lesson10
+
+namespace Lesson11
 {
-    internal class Program
+    class Person
+    {
+        public const string UnknownPersonName = "Noname";
+        private string _firstName;//field - поля
+        public string FirstName//property full властивість
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                _firstName = value == null ? UnknownPersonName : value;
+            }
+        }
+        public string LastName { get; set; }//property short
+        public string Phone { get; set; }//property
+        public DateTime BirthDate { get; init; }
+
+        public Person(Person otherPerson,string newFirstName = null, string newLastName = null, string newPhone = null, DateTime? newBirthDate = null) //копіюючий кончтруктор 
+        {
+            FirstName = newFirstName ?? otherPerson.FirstName; // null coalescent operator
+            LastName = newLastName ?? otherPerson.LastName;
+            Phone = newPhone ?? otherPerson.Phone;
+            BirthDate = newBirthDate ?? otherPerson.BirthDate;
+        }
+        public Person()
+        {
+        }
+    }
+
+
+        internal class Program
     {
         static string database = "db.txt";
-        static (string name, string phone, DateTime birth)[] contacts;
+        static Person[] contacts;
 
         static void Main()
         {
-
-            // 0. SAVE IT TO THE FILE WITH ".CSV"
-            // 1. Writes to console currently available contacts in the file
-            // 2. Add new contact
-            // 3. Edit contact
-            // 4. Search contacts
-            // 5. Calculates the contact age
-            // 6. Save database
-
-
             string[] records = ReadDatabaseAllTextLines(database);
             contacts = ConvertStringsToContacts(records);
 
             while (true)
             {
                 UserInteraction();
-                /*try
-                {
-                    UserInteraction();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Sorry, some error:{ex.Message} \n{ex.StackTrace}");
-                }*/
-
             }
         }
 
@@ -48,7 +60,6 @@ namespace Lesson10
             Console.WriteLine("5. Save");
             Console.Write("Enter a choice: ");
 
-            //int input = int.Parse(Console.ReadLine());
             uint input = 0;
             bool tryAgain = true;
             while (tryAgain)
@@ -58,20 +69,17 @@ namespace Lesson10
                     input = uint.Parse(Console.ReadLine());
                     tryAgain = false;
                 }
-                catch(FormatException)
+                catch (FormatException)
                 {
                     Console.Write("You`ve entered a wrong choice,please try again ");
-                    //throw ex;
                 }
                 catch (OverflowException)
                 {
                     Console.Write("You suck at math a positive namber ");
-                    //throw ex;
                 }
                 catch (SystemException)
                 {
                     Console.Write("Sorry,some sestem happened ");
-                    //throw ex;
                 }
             }
 
@@ -100,12 +108,12 @@ namespace Lesson10
 
         static void AddNewContact()
         {
-            Console.WriteLine("Enter new Name ");
-            string name = Console.ReadLine();
-
+            Console.Write("Enter new first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter new last name: ");
+            string lastName = Console.ReadLine();
             Console.WriteLine("Enter new Phone ");
             string phone = Console.ReadLine();
-
             DateTime birth = DateTime.Now;
             try
             {
@@ -117,33 +125,32 @@ namespace Lesson10
                 Console.WriteLine("Sorry, wrong format");
             }
 
-            var contactsNew = new (string name, string phone, DateTime date)[contacts.Length + 1];
-
-            for (var i = 0; i < contacts.Length; i++)
+            Person person = new Person() //instatiation
             {
-                contactsNew[i] = contacts[i];
-            }
-
-            contactsNew[contacts.Length].name = name;
-            contactsNew[contacts.Length].phone = phone;
-            contactsNew[contacts.Length].date = birth;
-            contacts = contactsNew;
-            SaveContactsToFile();
+                BirthDate = birth,
+                FirstName = firstName,
+                LastName = lastName,
+                Phone = phone,
+            };
+            Array.Resize(ref contacts, contacts.Length + 1); //ref аргумент передається по ссилці
+            contacts[^1] = person;
         }
         static void EditContact()
         {
             int Index = SearchContatct();
 
-            Console.WriteLine("Enter new Name");
-            string name1 = Console.ReadLine();
+            Console.Write("Enter first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter last name: ");
+            string lastName = Console.ReadLine();
             Console.WriteLine("Enter new Phone");
-            string phone1 = Console.ReadLine();
+            string phone = Console.ReadLine();
 
-            DateTime birth1 = DateTime.Now;
+            DateTime birth = DateTime.Now;
             try
             {
                 Console.WriteLine("Enter new Birth");
-                birth1 = DateTime.Parse(Console.ReadLine(), System.Globalization.CultureInfo.GetCultureInfo("uk-UA"));
+                birth = DateTime.Parse(Console.ReadLine(), System.Globalization.CultureInfo.GetCultureInfo("uk-UA"));
             }
             catch (FormatException)
             {
@@ -155,17 +162,14 @@ namespace Lesson10
 
             if (answer == true)
             {
-                contacts[Index].name = name1;
-                contacts[Index].phone = phone1;
-                contacts[Index].birth = birth1;
+                contacts[Index] = new Person(contacts[Index], firstName, lastName, phone, birth);
             }
+            
 
         }
 
         static int SearchContatct()
         {
-/*            Console.WriteLine("Enter a name to search for");
-            string name = Console.ReadLine();*/
             string name = "";
             try
             {
@@ -188,22 +192,22 @@ namespace Lesson10
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            var contactsNew = new (string name, string phone, DateTime date)[contacts.Length + 1];
+            var contactsNew = new Person[contacts.Length + 1];
 
             for (var i = 0; i < contacts.Length; i++)
             {
                 contactsNew[i] = contacts[i];
                 foreach (var contact in contactsNew)
                 {
-                    if (name == contactsNew[i].name)
+                    if (name == contactsNew[i].FirstName || name == contactsNew[i].LastName)
                     {
-                        int age = DateTime.Now.Year - contactsNew[i].date.Year;
-                        Console.WriteLine($"#{i + 1}: Name: {contactsNew[i].Item1}, Phone: {contactsNew[i].Item2}, Age: {age}");
+                        int age = DateTime.Now.Year - contactsNew[i].BirthDate.Year;
+                        Console.WriteLine($"#{i + 1}: Name: {contacts[i].FirstName} {contacts[i].LastName}, Phone: {contacts[i].Phone}, Age: {age}");
                         return i;
                     }
                     break;
                 }
-            } 
+            }
             return 0;
         }
 
@@ -211,15 +215,15 @@ namespace Lesson10
         {
             for (int i = 0; i < contacts.Length; i++)
             {
-                int age = DateTime.Now.Year - contacts[i].birth.Year; 
-                Console.WriteLine($"#{i + 1}: Name: {contacts[i].Item1}, Phone: {contacts[i].Item2}, Age: {age}");
+                int age = DateTime.Now.Year - contacts[i].BirthDate.Year;
+                Console.WriteLine($"#{i + 1}: Name: {contacts[i].FirstName} {contacts[i].LastName}, Phone: {contacts[i].Phone}, Age: {age}");
             }
         }
 
-        static (string name, string phone, DateTime date)[] ConvertStringsToContacts(string[] records)
+        static Person[] ConvertStringsToContacts(string[] records)
         {
 
-            var contacts = new (string name, string phone, DateTime date)[records.Length];
+            var contacts = new Person[records.Length];
             for (int i = 0; i < records.Length; ++i)
             {
                 string[] array = records[i].Split(',');
@@ -228,9 +232,13 @@ namespace Lesson10
                     Console.WriteLine($"Line #{i + 1}: {records[i]} cannot be parsed");
                     continue;
                 }
-                contacts[i].name = array[0];
-                contacts[i].phone = array[1];
-                contacts[i].date = DateTime.Parse(array[2]);
+                contacts[i] = new Person
+                {
+                    FirstName = array[0],
+                    LastName = Person.UnknownPersonName,
+                    Phone = array[1],
+                    BirthDate = DateTime.Parse(array[2]),
+                };
             }
             return contacts;
         }
@@ -243,9 +251,9 @@ namespace Lesson10
                 string[] lines = new string[contacts.Length];
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    lines[i] = $"{contacts[i].Item1},{contacts[i].Item2},{contacts[i].Item3}";
+                    lines[i] = $"{contacts[i].FirstName} {contacts[i].LastName},{contacts[i].Phone},{contacts[i].BirthDate}";
                 }
-                File.AppendAllLines("database ", lines);
+                File.WriteAllLines("database ", lines);
             }
 
             catch (DirectoryNotFoundException ex)
@@ -268,7 +276,7 @@ namespace Lesson10
             {
                 return File.ReadAllLines(file);
             }
-            catch (DirectoryNotFoundException ex )
+            catch (DirectoryNotFoundException ex)
             {
                 Console.WriteLine($"Error: directory not found: {ex.Message}");
                 return new string[0];
@@ -281,6 +289,4 @@ namespace Lesson10
         }
     }
 }
-
-
 
