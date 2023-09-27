@@ -7,8 +7,6 @@ namespace Lesson12
     internal class Program
     {
         static PhoneBook _phoneBook;
-
-
         static void Main(string[] args)
         {
             _phoneBook = PhoneBook.ReadPhoneBookFile(args.Length == 0 ? "db.txt" : args[0]);
@@ -20,9 +18,9 @@ namespace Lesson12
         }
         static Person ReadPersonConsole()
         {
-            Console.Write("Enter new last name: ");
+            Console.WriteLine("Enter new last name: ");
             string lastName = Console.ReadLine();
-            Console.Write("Enter new first name: ");
+            Console.WriteLine("Enter new first name: ");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter new Phone ");
             string phone = Console.ReadLine();
@@ -77,22 +75,21 @@ namespace Lesson12
                 case 3:
                     Console.Write("Enter a name to search for : ");
                     string name = Console.ReadLine();
-                    Person newDate = ReadPersonConsole();
-                    _phoneBook.EditContact(name, newDate);
+                    Person newData = ReadPersonConsole();
+                    _phoneBook.EditContact(name, newData);
                     break;
                 case 4:
                     Console.Write("Enter a name to search for : ");
                     string query = Console.ReadLine();
-                    Console.WriteLine( _phoneBook.SearchContactByQuery(query));
+                    Console.WriteLine(_phoneBook.SearchContactByQuery(query));
                     break;
                 case 5:
-                   _phoneBook.SaveToFile();
+                    _phoneBook.SaveToFile();
                     break;
                 default:
                     Console.WriteLine("No such operation.");
                     break;
             }
         }
-
     }
 }

@@ -1,0 +1,15 @@
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\bin\Debug\net6.0\Lesson13.exe
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\bin\Debug\net6.0\Lesson13.deps.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\bin\Debug\net6.0\Lesson13.runtimeconfig.json
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\bin\Debug\net6.0\Lesson13.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\bin\Debug\net6.0\Lesson13.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.csproj.AssemblyReference.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.GeneratedMSBuildEditorConfig.editorconfig
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.AssemblyInfoInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.AssemblyInfo.cs
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.csproj.CoreCompileInputs.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\refint\Lesson13.dll
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.pdb
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\Lesson13.genruntimeconfig.cache
+D:\Рoзробка С#\Lesson\Lesson\Lesson\Lesson13\obj\Debug\net6.0\ref\Lesson13.dll

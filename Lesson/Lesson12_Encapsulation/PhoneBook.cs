@@ -2,6 +2,7 @@
 {
     class PhoneBook
     {
+
         private string _phoneBookFile; //приватні поля прийнятописати через _
         private Person[] _contacts;
         public PhoneBook(string file)
@@ -15,17 +16,17 @@
             Array.Resize(ref _contacts, _contacts.Length + 1); //ref аргумент передається по ссилці
             _contacts[^1] = newPerson;
         }
-        public bool EditContact(string name,Person newPerson)
+        public bool EditContact(string name, Person newPerson)
         {
             int contactIndex = ContatctIndex(name);
             if (contactIndex < 0)
             {
                 return false;
             }
-            return false;
+            _contacts[contactIndex] = newPerson;
+            return true;
         }
-        public Person SearchContatct(string name, Person newPerson)
-             => _contacts[ContatctIndex(name)];
+
         public bool DeleteContatct(string name)
         {
             int contactIndex = ContatctIndex(name);
@@ -36,8 +37,8 @@
             Person[] contactsCopy = new Person[_contacts.Length];
             Array.Copy(_contacts, contactsCopy, _contacts.Length);
             _contacts = new Person[_contacts.Length - 1];//Зменшив на 1
-            Array.Copy(contactsCopy,0,_contacts,0,contactIndex );// зкопіював до індексу що знайшли
-            Array.Copy(contactsCopy, contactIndex+1,_contacts, contactIndex,_contacts.Length - contactIndex);//зкопіював після індексу що знайшли
+            Array.Copy(contactsCopy, 0, _contacts, 0, contactIndex);// зкопіював до індексу що знайшли
+            Array.Copy(contactsCopy, contactIndex + 1, _contacts, contactIndex, _contacts.Length - contactIndex);//зкопіював після індексу що знайшли
             return true;
         }
 
@@ -81,15 +82,6 @@
             }
             return -1;
         }
-
-        public static PhoneBook ReadPhoneBookFile(string fileName)
-        {
-            string[] lines = ReadDatabaseAllTextLines(fileName);
-            return new PhoneBook(fileName)
-            {
-                _contacts = ConvertStringsToContacts(lines),
-            };
-        }
         public bool SaveToFile()
         {
             try
@@ -108,12 +100,19 @@
                 return false;
             }
         }
-
-        private  static string[] ReadDatabaseAllTextLines(string file)
+        public static PhoneBook ReadPhoneBookFile(string fileName)
+        {
+            string[] lines = ReadDatabaseAllTextLines(fileName);
+            return new PhoneBook(fileName)
+            {
+                _contacts = ConvertStringsToContacts(lines),
+            };
+        }
+        private static string[] ReadDatabaseAllTextLines(string file)
         {
             try
             {
-                return File.ReadAllLines(file);
+                return File.ReadAllLines(@"D:\Рoзробка С#\Encapsulation\Encapsulation\Encapsulation\Encapsulation\db.txt.txt");
             }
             catch (Exception ex)
             {
@@ -128,12 +127,11 @@
             for (int i = 0; i < records.Length; ++i)
             {
                 string[] array = records[i].Split(',');
-                if (array.Length != 3)
+                if (array.Length != 1)
                 {
-                    continue;
+                    contacts[i] = new Person(array[0], array[1], array[2], DateTime.Parse(array[3]));
                 }
-                string[] nameParts = array[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                contacts[i] = new Person(nameParts[0], nameParts[1], array[2], DateTime.Parse(array[3]));
+
             }
             return contacts;
         }
