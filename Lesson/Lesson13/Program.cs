@@ -41,7 +41,7 @@ public class RightTriangle : Triangle //прямоугольный треуго�
     public  float Side { get; }
     public  float Height { get; }
     public float Hypothesis { get; }
-    public override float RadiusСircles => (1 / 2) * Hypothesis;
+    public override float RadiusСircles => Hypothesis * (1.0f / 2);
     public override float Perimeter => Side + Height + Hypothesis;
     public override float Area => (Height * Side) / 2;
 }

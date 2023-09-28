@@ -112,7 +112,7 @@
         {
             try
             {
-                return File.ReadAllLines(@"D:\Рoзробка С#\Encapsulation\Encapsulation\Encapsulation\Encapsulation\db.txt.txt");
+                return File.ReadAllLines(file);
             }
             catch (Exception ex)
             {
