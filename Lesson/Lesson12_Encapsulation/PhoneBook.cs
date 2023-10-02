@@ -5,6 +5,7 @@
 
         private string _phoneBookFile; //приватні поля прийнятописати через _
         private Person[] _contacts;
+
         public PhoneBook(string file)
         {
             _phoneBookFile = file;
@@ -45,6 +46,8 @@
         public Person[] GetAllContacts() => _contacts;
 
         public Person SearchContactByQuery(string query) => _contacts[ContatctIndex(query)];
+
+
         private int ContatctIndex(string name)
         {
             try
@@ -82,6 +85,8 @@
             }
             return -1;
         }
+
+
         public bool SaveToFile()
         {
             try
@@ -100,6 +105,7 @@
                 return false;
             }
         }
+
         public static PhoneBook ReadPhoneBookFile(string fileName)
         {
             string[] lines = ReadDatabaseAllTextLines(fileName);
@@ -108,6 +114,7 @@
                 _contacts = ConvertStringsToContacts(lines),
             };
         }
+
         private static string[] ReadDatabaseAllTextLines(string file)
         {
             try
@@ -120,6 +127,7 @@
                 return new string[0];
             }
         }
+
         private static Person[] ConvertStringsToContacts(string[] records)
         {
 
@@ -135,5 +143,6 @@
             }
             return contacts;
         }
+
     }
 }

@@ -1,51 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-public class Shape
-{
-    public Shape(string name)
-    {
-        _name = name;
-    }
-
-    private string _name = string.Empty;
-    public string Name => _name;
-    public virtual float RadiusСircles => 0;
-    public virtual float Perimeter => 0;
-    public virtual float Area => 0;
-}
-
-public class Triangle : Shape
-{
-    public Triangle(float side, float height)
-                : base(nameof(Triangle))
-    {
-        Side = side;//cторона
-        Height = height;//висота
-    }
-    public  float Side { get; }
-    public  float Height { get; }
-    public override float Perimeter => 3 * Side;
-    public override float Area => (Height * Side) / 2;
-}
-
-public class RightTriangle : Triangle //прямоугольный треугольник
-{
-    public RightTriangle(float side, float height, float hypothesis) 
-            : base(side, height)
-    {
-        Side = side;
-        Height = height;
-        Hypothesis = hypothesis;
-    }
-    public  float Side { get; }
-    public  float Height { get; }
-    public float Hypothesis { get; }
-    public override float RadiusСircles => Hypothesis * (1.0f / 2);
-    public override float Perimeter => Side + Height + Hypothesis;
-    public override float Area => (Height * Side) / 2;
-}
-
 internal class Program
 {
     static void Main(string[] args)
@@ -68,12 +23,10 @@ internal class Program
         {
             sum_area += shapes[i].Area;
             sum_perimeters += shapes[i].Perimeter;
-            sum_radiyc += shapes[i].RadiusСircles;
         }
 
         Console.WriteLine($"Total area is {sum_area}");
         Console.WriteLine($"Total perimeter is {sum_perimeters}");
-        Console.WriteLine($"Total radiyc is {sum_radiyc}");
     }
 
     static Shape ReadShape()
