@@ -204,7 +204,7 @@ namespace Lesson10
                     break;
                 }
             } 
-            return 0;
+            return -1;
         }
 
         static void WriteAllContactsToConsole()
